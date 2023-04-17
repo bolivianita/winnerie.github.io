@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="game.js"></script>
+    <title>WINNERIE</title>
+</head>
+<body>
+    <div id="container" class="container">
+            <div class="title">
+                <h1 class="main-title">WINNERIE</h1>
+                <p class="description">simple multiple choice game where 99% of the odds are in your favor.</p>
+            </div>
+            <div class="info">
+                <form class="form">
+                    <h2 class="form-title">create your own Winnerie</h2>
+                    <div class="questions">
+                        <p class="question">Your question:</p>
+                        <input class="form__input" id="question" type="text" placeholder="Where should we go for vacation..." required>
+                        <p class="question favor">The choice in your favor:</p>
+                        <input class="form__input"  id="wanted" type="text" placeholder="Bali" required>
+                        <p class="question untouch">The (untouchable) choice:</p>
+                        <input class="form__input" id="unwanted" type="text" placeholder="Missouri" required>
+                    </div>
+     
+                        <button id="start-button" class="form__button button">START</button>
+
+                </form>
+            </div>
+    </div>
+
+
+     <!-- cant touch it game -->
+  <div id="game">
+    <!-- modal -->
+    <div id="modal-container">
+      <div class="confetti">
+        <div class="confetti-piece"></div>
+        <div class="confetti-piece"></div>
+        <div class="confetti-piece"></div>
+        <div class="confetti-piece"></div>
+        <div class="confetti-piece"></div>
+        <div class="confetti-piece"></div>
+        <div class="confetti-piece"></div>
+        <div class="confetti-piece"></div>
+        <div class="confetti-piece"></div>
+        <div class="confetti-piece"></div>
+        <div class="confetti-piece"></div>
+        <div class="confetti-piece"></div>
+        <div class="confetti-piece"></div>
+    </div>
+      <div class="modal-background">
+        <div class="modal">
+          <p class="boxMessage"></p>
+          <h2>Great Choice!</h2>
+          <svg class="modal-svg" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" preserveAspectRatio="none">
+                    <rect x="0" y="0" fill="none" width="226" height="162" rx="3" ry="3"></rect>
+                  </svg>
+        </div>
+      </div>
+    </div>
+
+    <h1 class="finalq">Prestame 100bs?</h1>
+    <div class="boxes">
+        <div class="box1" id="box1"> Yes</div>
+         <div id="myDiv" class="box2"> No</div>
+    </div>
+  </div>
+
+  <div class="mobile">
+    <h1 class="mobile-text">Hey! I'm sorry, this only works on a computer. </h1>
+  </div>
+    <script>
+        const controls = document.getElementById('container');
+        const startButton = document.getElementById('start-button');
+        const game = document.getElementById('game');
+        game.style.display = "none";
+        const questionInput = document.getElementById("question");
+        const finalq = document.getElementsByClassName("finalq")[0];
+        const wantedAns = document.getElementById("wanted");
+        const box1 = document.getElementsByClassName("box1")[0];
+        const unwantedAns = document.getElementById("unwanted");
+        const box2 = document.getElementsByClassName("box2")[0];
+        const boxMessage = document.getElementsByClassName("boxMessage")[0];
+    
+        startButton.onclick = function () {
+          event.preventDefault();
+          if (controls.style.display !== "none") {
+            controls.style.display = "none";
+            game.style.display = "block";
+            finalq.innerHTML = questionInput.value;
+            box1.innerHTML = wantedAns.value;
+            box2.innerHTML = unwantedAns.value;
+          } else {
+            controls.style.display = "block";
+          }
+        };
+    
+    
+        box2.onclick = function () {
+    
+        }
+    
+        $('.box1').click(function(){
+          var buttonId = $(this).attr('id');
+          $('#modal-container').removeAttr('class').addClass(buttonId);
+          $('body').addClass('modal-active');
+          boxMessage.innerHTML = wantedAns.value;
+        })
+        
+        $('.box2').click(function(){
+          var buttonId = $(this).attr('id');
+          $('#modal-container').removeAttr('class').addClass(buttonId);
+          $('body').addClass('modal-active');
+          boxMessage.innerHTML = unwantedAns.value;
+        })
+    
+        $('#modal-container').click(function(){
+          $(this).addClass('out');
+          $('body').removeClass('modal-active');
+        });
+      </script>
+</body>
+</html>
