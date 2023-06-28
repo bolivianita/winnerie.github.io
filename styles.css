@@ -1,17 +1,3 @@
-@font-face {
-    font-family: "Apercu Mono";
-    src:url("/fonts/Apercu\ Mono.otf");
-}
-
-@font-face {
-    font-family: "Apercu Pro";
-    src:url("/fonts/Apercu\ Pro\ Regular.otf");
-}
-
-@font-face {
-    font-family: "Apercu Regular";
-    src:url("/fonts/Apercu\ Regular.otf");
-}
 
 body{
     background-color: #ecf0f3;
@@ -23,7 +9,7 @@ body{
 .hide {
     display: none;
   }
-  
+
 
 .container{
     display: flex;
@@ -213,29 +199,6 @@ body{
     color: #091580;
 }
 
-
-
-#modal-container.five {
-    transform: scale(1);
-}
-#modal-container.five .modal-background {
-    background: rgba(255, 255, 255, 0);
-    animation: fadeIn 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
-}
-#modal-container.five .modal-background .modal {
-    transform: translateX(-1500px);
-    animation: roadRunnerIn 0.3s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
-}
-#modal-container.five.out {
-    animation: quickScaleDown 0s 0.5s linear forwards;
-}
-#modal-container.five.out .modal-background {
-    animation: fadeOut 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
-}
-#modal-container.five.out .modal-background .modal {
-    animation: roadRunnerOut 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
-}
-
 #modal-container {
     position: fixed;
     display: table;
@@ -247,7 +210,74 @@ body{
     z-index: 1;
 }
 
-/* STARTS HERE */
+#modal-container .modal-background {
+    display: table-cell;
+    background: rgba(0, 0, 0, 0.8);
+    text-align: center;
+    vertical-align: middle;
+}
+
+#modal-container .modal-background .modal {
+    background: white;
+    padding: 50px;
+    display: inline-block;
+    border-radius: 3px;
+    font-weight: 300;
+    position: relative;
+}
+
+#modal-container .modal-background .modal h2 {
+    font-size: 25px;
+    line-height: 25px;
+    margin-bottom: 15px;
+}
+
+#modal-container .modal-background .modal p {
+    font-size: 25px;
+    line-height: 22px;
+}
+
+#modal-container .modal-background .modal .modal-svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    border-radius: 3px;
+}
+
+#modal-container .modal-background .modal .modal-svg rect {
+    stroke: #fff;
+    stroke-width: 2px;
+    stroke-dasharray: 778;
+    stroke-dashoffset: 778;
+}
+
+#modal-container.in {
+    transform: scale(1);
+    animation: fadeIn 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+
+#modal-container.in .modal-background {
+    animation: fadeIn 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+
+#modal-container.in .modal-background .modal {
+    animation: roadRunnerIn 0.3s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+
+#modal-container.out {
+    animation: quickScaleDown 0s 0.5s linear forwards;
+}
+
+#modal-container.out .modal-background {
+    animation: fadeOut 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+
+#modal-container.out .modal-background .modal {
+    animation: roadRunnerOut 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+
 
 
 
@@ -778,7 +808,7 @@ body{
         margin-top: 27%;
         font-size:30px;
     }
-    
+
 
     .boxes{
         top: 70%;
